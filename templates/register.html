@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Lung Cancer Prediction{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto mt-12 glass-card p-8">
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">Create your account</h1>
+        <p class="mt-2 text-gray-600">Join us to assess your lung health</p>
+    </div>
+    
+    <form method="POST" action="{{ url_for('register') }}" class="space-y-6">
+        <div class="grid grid-cols-1 gap-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                <input type="text" id="username" name="username" required 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="Choose a username">
+            </div>
+            
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+                <input type="email" id="email" name="email" required 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="your@email.com">
+            </div>
+            
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" id="password" name="password" required 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="Create a password">
+                <p class="mt-1 text-xs text-gray-500">Must be at least 8 characters long</p>
+            </div>
+            
+            <div>
+                <label for="confirm_password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="Confirm your password">
+            </div>
+            
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input id="terms" name="terms" type="checkbox" required
+                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="terms" class="font-medium text-gray-700">I agree to the <a href="#" class="text-blue-600 hover:text-blue-500">Terms</a> and <a href="#" class="text-blue-600 hover:text-blue-500">Privacy Policy</a></label>
+                </div>
+            </div>
+            
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input id="newsletter" name="newsletter" type="checkbox"
+                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="newsletter" class="font-medium text-gray-700">Subscribe to our newsletter</label>
+                    <p class="text-gray-500">Get the latest health tips and updates</p>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <button type="submit" 
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Create account
+            </button>
+        </div>
+    </form>
+    
+    <div class="mt-6">
+        <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+                <span class="px-2 bg-white text-gray-500">
+                    Or sign up with
+                </span>
+            </div>
+        </div>
+        
+        <div class="mt-6 grid grid-cols-2 gap-3">
+            <div>
+                <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Sign up with Google</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.699 1.028 1.595 1.028 2.688 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.14 18.195 20 14.44 20 10.017 20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+            
+            <div>
+                <a href="#" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Sign up with Microsoft</span>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 21 20" aria-hidden="true">
+                        <path d="M6.3 2.841a1.5 1.5 0 0 0-1.491 1.327L4.8 4.1h12.6l-.01-.133a1.5 1.5 0 0 0-1.49-1.327H6.3Zm9.18 3.2H4.5l.21 1.22a1.5 1.5 0 0 0 1.49 1.327h8.7a1.5 1.5 0 0 0 1.49-1.327l.21-1.22Zm-10.68 8.4a1.5 1.5 0 0 0-1.49 1.327l-.01.133v1.8a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5v-1.8a1.5 1.5 0 0 0-1.5-1.5H4.8Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <p class="mt-8 text-center text-sm text-gray-600">
+        Already have an account? 
+        <a href="{{ url_for('login') }}" class="font-medium text-blue-600 hover:text-blue-500">
+            Sign in
+        </a>
+    </p>
+</div>
+{% endblock %}
