@@ -17,4 +17,9 @@ setup(
         'gunicorn==21.2.0'
     ],
     python_requires='>=3.9, <3.10',
+    classifiers=[
+        'Programming Language :: Python :: 3.9',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
 )
