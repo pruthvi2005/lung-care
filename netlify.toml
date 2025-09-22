@@ -1,9 +1,11 @@
 [build]
-  command = "pip install -r requirements.txt && python -m pip install --upgrade pip && python -m pip install gunicorn"
+  command = "pip install --upgrade pip && pip install -r requirements.txt"
   publish = "static"
+  functions = "functions"
 
 [build.environment]
   PYTHON_VERSION = "3.9.0"
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/*"
