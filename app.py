@@ -1,10 +1,26 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-import pandas as pd
-import joblib
+import sys
+import logging
 from datetime import datetime
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+try:
+    import pandas as pd
+except ImportError as e:
+    logger.error("Error importing pandas: %s", e)
+    pd = None
+
+try:
+    import joblib
+except ImportError as e:
+    logger.error("Error importing joblib: %s", e)
+    joblib = None
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -35,15 +51,28 @@ def predict_risk_level(features):
     Predict the risk level based on input features
     In a real application, this would use the trained model
     """
-    # This is a placeholder - replace with actual model prediction
-    risk_score = sum(features.values()) / len(features)
-    
-    if risk_score <= 3:
-        return 'Low', risk_score
-    elif risk_score <= 6:
-        return 'Medium', risk_score
-    else:
-        return 'High', risk_score
+    try:
+        if pd is None or joblib is None:
+            logger.warning("Required ML dependencies not available. Using dummy prediction.")
+            # Fallback to simple calculation if ML dependencies aren't available
+            risk_score = sum(features.values()) / len(features)
+        else:
+            # This is where you would load and use your actual model
+            # model = joblib.load('path_to_your_model.pkl')
+            # risk_score = model.predict([list(features.values())])[0]
+            risk_score = sum(features.values()) / len(features)  # Placeholder
+        
+        # Convert risk score to a simple category
+        if risk_score <= 3:
+            return 'Low', float(risk_score)
+        elif risk_score <= 6:
+            return 'Medium', float(risk_score)
+        else:
+            return 'High', float(risk_score)
+            
+    except Exception as e:
+        logger.error(f"Error in prediction: {str(e)}")
+        return 'Error', 0.0
 
 # Routes
 @app.route('/')
