@@ -16,7 +16,7 @@ setup(
         'python-dotenv==1.0.0',
         'gunicorn==21.2.0'
     ],
-    python_requires='>=3.9, <3.10',
+    python_requires='>=3.9.0, <3.10.0',
     classifiers=[
         'Programming Language :: Python :: 3.9',
         'License :: OSI Approved :: MIT License',
